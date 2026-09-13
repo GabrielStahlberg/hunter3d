@@ -4,8 +4,7 @@
 export const site = {
   name: "Hunter3D",
   legalName: "Hunter3D",
-  // TODO: replace with the production domain once it is defined.
-  url: "https://hunter3d.com.br",
+  url: "https://hunter3d.vercel.app",
   locale: "pt_BR",
   themeColor: "#FFFEF0",
 
