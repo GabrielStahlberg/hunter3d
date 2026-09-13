@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fffef0;
+  --surface: #e2ded4;
+  --image-fill: #faf8f3;
+  --foreground: #221f1a;
+  --muted-foreground: #5a5347;
+  --border: #d8cfbd;
+
+  --primary: #a52d1d;
+  --primary-foreground: #f7f5ef;
+  --accent: #e8632c;
+  --accent-foreground: #f7f5ef;
+
+  --destructive: #b3261e;
+
+  --radius: 0.5rem;
+
+  --font-display: var(--font-bricolage);
+  --font-sans: var(--font-work-sans);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-image-fill: var(--image-fill);
+  --color-foreground: var(--foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --radius-DEFAULT: var(--radius);
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+}
+
+@layer base {
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+  }
+
+  a {
+    color: var(--primary);
+  }
+
+  a:hover {
+    color: var(--accent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+}
+
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
