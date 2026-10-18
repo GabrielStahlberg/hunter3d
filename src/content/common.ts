@@ -20,18 +20,6 @@ export const common = {
         : `Olá! Vi o produto ${productName} no site da Hunter3D e gostaria de saber mais.`,
     ctaLabel: "Chamar no WhatsApp",
     bubbleMessage: "Olá. Como posso ajudar?",
-    cartMessage: (items: Array<{ name: string; quantity: number; price: number }>, total: number) => {
-      const lines = items.map(
-        (item, index) => `${index + 1}. ${item.name} (x${item.quantity}) — ${formatPrice(item.price * item.quantity)}`,
-      );
-      return [
-        "Olá! Gostaria de saber mais sobre os produtos da minha sacola:",
-        "",
-        ...lines,
-        "",
-        `Total estimado: ${formatPrice(total)}`,
-      ].join("\n");
-    },
   },
 
   seo: {
@@ -42,13 +30,6 @@ export const common = {
       price != null
         ? `${productName} — ${categoryName}, ${formatPrice(price)}. Fale pelo WhatsApp para saber mais.`
         : `${productName} — ${categoryName}. Consulte o valor pelo WhatsApp.`,
-  },
-
-  cart: {
-    iconLabel: (count: number) => (count > 0 ? `Sacola, ${count} ${count === 1 ? "item" : "itens"}` : "Sacola"),
-    addLabel: "Adicionar à sacola",
-    addedLabel: "Adicionado",
-    unavailableLabel: "Indisponível",
   },
 
   notFound: {

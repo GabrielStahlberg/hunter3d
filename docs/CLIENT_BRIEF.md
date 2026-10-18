@@ -77,19 +77,26 @@ Visitors should be able to:
 
 Should introduce the brand and present:
 
-* Hero
-* main value proposition
+* seasonal promo carousel (see below)
 * the full product catalog (see "Catalog" below)
-* short explanation of how purchasing works
 * WhatsApp CTA
 * contact information
 
 Client decision: there is no separate "categories" section or curated
 "featured products" preview on the home page. The full catalog — every
 product, category filters and search — is embedded directly on the home
-page right after the Hero, in a scrollable section anchored at `/#produtos`.
-The product model has no `featured` concept at all — every product is
-presented the same way in the catalog grid.
+page right after the promo carousel, in a scrollable section anchored at
+`/#produtos`. The product model has no `featured` concept at all — every
+product is presented the same way in the catalog grid.
+
+The static Hero banner was replaced with an auto-looping carousel
+(`PromoCarousel.tsx`) of seasonal promo images (currently Halloween and
+Natal, `public/halloween.png` / `public/natal.png`). Clicking one filters
+the catalog below to its category and scrolls to it — entirely client-side,
+via `CatalogFilterContext` (`lib/catalog-filter-context.tsx`), not a URL
+query string, so the address bar always stays on `/`. Add more slides
+there, and a matching category in `src/content/categories.ts`, for future
+seasonal promos.
 
 ### Catalog
 
@@ -168,7 +175,7 @@ The product model should support at least:
 * slug
 * name
 * category
-* price (optional — omitted for products with no fixed price, which show "Consultar valor" and skip the cart)
+* price (optional — omitted for products with no fixed price, which show "Consultar valor" instead)
 * images
 * available
 
@@ -383,30 +390,19 @@ V1 MUST NOT implement:
 
 Products will initially be manually maintained in the codebase.
 
-## Approved exception — WhatsApp interest bag ("sacola")
+## Removed — WhatsApp interest bag ("sacola")
 
-The Stahlberg Labs default standard excludes shopping carts from V1-style
-catalog sites, and that default still applies to every other project. For
-Hunter3D specifically, the client requested and approved an exception:
-a client-side "sacola" (bag) that lets a visitor collect multiple products
-before contacting the seller, so the WhatsApp message lists everything at
-once instead of one message per product.
+Hunter3D previously had an approved exception to the Stahlberg Labs default
+(which excludes shopping carts from V1-style catalog sites): a client-side
+"sacola" that let a visitor collect multiple products before contacting the
+seller. It was removed once all product prices were hidden site-wide, since
+its only output was a WhatsApp message with an estimated total, which no
+longer applies without visible prices. Contact per product is now handled
+solely by the per-product "Falar sobre este produto" WhatsApp CTA.
 
-This is explicitly NOT a shopping cart in the e-commerce sense. It must stay
-within these limits:
-
-* No backend, no database, no server-side persistence — state lives only in
-  the visitor's browser (localStorage).
-* No checkout, no payment, no order creation, no order/inventory management.
-* No accounts — the bag is anonymous and local to the device/browser.
-* Its only output is a pre-filled WhatsApp message listing the selected
-  products, quantities, and an estimated total. Price, customization,
-  shipping and final confirmation are still negotiated entirely over
-  WhatsApp, exactly as with a single-product inquiry.
-* An item can be added, its quantity changed, or removed — nothing more.
-
-If a future project ever needs something similar, treat it as a new,
-separate approval — this exception is scoped to Hunter3D only.
+If a future project (or Hunter3D again, if prices come back) needs
+something similar, treat it as a new, separate approval — this exception
+was scoped to Hunter3D only and is not a standing Stahlberg Labs pattern.
 
 ## Product management for V1
 

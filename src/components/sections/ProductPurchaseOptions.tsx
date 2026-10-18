@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Badge } from "@/components/ui/Badge";
 import { WhatsAppButton } from "@/components/sections/WhatsAppButton";
-import { AddToCartButton } from "@/components/sections/AddToCartButton";
 import { formatPrice } from "@/lib/format";
 import { getProductPrice } from "@/lib/products";
 import { common } from "@/content/common";
@@ -78,10 +77,7 @@ export function ProductPurchaseOptions({ product, productUrl }: ProductPurchaseO
 
       <div className="mt-8 flex flex-wrap items-center gap-4">
         {product.available ? (
-          <>
-            <WhatsAppButton message={whatsappMessage} label={productPageContent.whatsappCta} size="lg" />
-            {price != null && <AddToCartButton product={product} optionLabel={selectedLabel} size="lg" />}
-          </>
+          <WhatsAppButton message={whatsappMessage} label={productPageContent.whatsappCta} size="lg" />
         ) : (
           <p className="text-sm text-muted-foreground">{productPageContent.unavailableNote}</p>
         )}

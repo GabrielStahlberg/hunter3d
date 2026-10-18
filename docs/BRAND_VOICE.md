@@ -114,11 +114,10 @@ Avoid:
 
 unless the business model changes.
 
-Client decision: Hunter3D has an approved exception for a client-side
-"sacola" feature (see CLIENT_BRIEF.md's "Approved exception" section), so
-"Adicionar à sacola" is the one sanctioned CTA of this kind on this project.
-It only queues products for a single WhatsApp message — it does not imply
-checkout or online payment. The WhatsApp-based CTAs above remain primary.
+Hunter3D previously had an approved exception for a client-side "sacola"
+CTA ("Adicionar à sacola"); it was removed once all product prices were
+hidden site-wide (see CLIENT_BRIEF.md's "Removed — WhatsApp interest bag"
+section). The WhatsApp-based CTAs above are the only ones in use now.
 
 ## Tone
 

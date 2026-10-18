@@ -4,7 +4,6 @@ import "./globals.css";
 import { Header } from "@/components/sections/Header";
 import { Footer } from "@/components/sections/Footer";
 import { FloatingWhatsApp } from "@/components/sections/FloatingWhatsApp";
-import { CartProvider } from "@/lib/cart-context";
 import { site } from "@/config/site";
 import { common } from "@/content/common";
 
@@ -53,20 +52,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="pt-BR" className={`${bricolage.variable} ${workSans.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
-        <CartProvider>
-          <a
-            href="#conteudo"
-            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
-          >
-            {common.skipToContent}
-          </a>
-          <Header />
-          <main id="conteudo" className="flex-1">
-            {children}
-          </main>
-          <Footer />
-          <FloatingWhatsApp />
-        </CartProvider>
+        <a
+          href="#conteudo"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
+        >
+          {common.skipToContent}
+        </a>
+        <Header />
+        <main id="conteudo" className="flex-1">
+          {children}
+        </main>
+        <Footer />
+        <FloatingWhatsApp />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}

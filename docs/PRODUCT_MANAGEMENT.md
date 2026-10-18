@@ -142,10 +142,9 @@ priceOptions: [{ label: "Kit completo", price: 90 }],
 ```
 
 Na página do produto aparecem botões para escolher entre "Unidade" e cada
-opção de `priceOptions`; o preço mostrado, a mensagem do WhatsApp e o botão
-"Adicionar à sacola" seguem a opção selecionada. No card do catálogo (onde
-não há espaço para escolher), aparece "A partir de" com o menor preço entre
-todas as opções.
+opção de `priceOptions`; o preço mostrado e a mensagem do WhatsApp seguem a
+opção selecionada. No card do catálogo (onde não há espaço para escolher),
+aparece "A partir de" com o menor preço entre todas as opções.
 
 Pode adicionar quantas opções quiser em `priceOptions`, cada uma com seu
 próprio `label` e `price`.
@@ -155,5 +154,4 @@ próprio `label` e `price`.
 Quando o valor depende de algo variável (ex.: um nome personalizado, onde o
 preço muda de acordo com o tamanho do texto), simplesmente não inclua o
 campo `price` no produto. O site mostra "Consultar valor" no lugar do preço,
-o botão "Adicionar à sacola" some (não faz sentido calcular subtotal sem um
-valor) e o cliente segue direto pelo WhatsApp — que já é o fluxo principal.
+e o cliente segue direto pelo WhatsApp — que já é o fluxo principal.

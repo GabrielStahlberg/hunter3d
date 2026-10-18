@@ -12,11 +12,19 @@ export type Product = {
   id: string;
   slug: string;
   name: string;
-  category: string;
+  // A single category slug, or more than one when the product genuinely
+  // belongs in several (e.g. a Halloween piece that's also part of the
+  // Tricô line). The first one is treated as primary for single-category
+  // display (card label, breadcrumb, structured data).
+  category: string | string[];
   // Omit entirely for a product with no fixed price (e.g. it depends on
-  // customization) — the site shows "Consultar valor" and skips the cart,
-  // since there's no amount to add up.
+  // customization) — the site shows "Consultar valor" instead, since
+  // there's no amount to display.
   price?: number;
+  // Hides `price` from display (shows "Consultar valor" instead, same as
+  // having no price) without losing the recorded value — flip back to
+  // false to show it again.
+  priceHidden?: boolean;
   // Additional ways to buy the same product at a different price (e.g. a
   // full kit vs. a single unit). `price` above stays the base/unit price.
   priceOptions?: PriceOption[];
@@ -31,13 +39,4 @@ export type Product = {
   material?: string;
   colors?: string[];
   customizable?: boolean;
-};
-
-export type CartItem = {
-  slug: string;
-  quantity: number;
-  // Label of the selected PriceOption, when the product has priceOptions —
-  // lets the same product have separate cart lines per option (e.g. one
-  // line for "Unidade", another for "Kit completo").
-  optionLabel?: string;
 };

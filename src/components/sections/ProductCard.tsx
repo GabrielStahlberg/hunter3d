@@ -2,11 +2,9 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/Badge";
 import { Heading } from "@/components/ui/Heading";
 import { ProductImage } from "@/components/ui/ProductImage";
-import { AddToCartButton } from "@/components/sections/AddToCartButton";
 import { formatPrice } from "@/lib/format";
-import { getCategoryName, getStartingPrice } from "@/lib/products";
+import { getPrimaryCategoryName, getStartingPrice } from "@/lib/products";
 import { catalogContent } from "@/content/catalog";
-import { cn } from "@/lib/utils";
 import type { Product } from "@/lib/types";
 
 export function ProductCard({ product }: { product: Product }) {
@@ -27,8 +25,8 @@ export function ProductCard({ product }: { product: Product }) {
             </div>
           )}
         </div>
-        <div className={cn("p-4", startingPrice != null && "pb-0")}>
-          <p className="text-xs font-medium text-primary">{getCategoryName(product.category)}</p>
+        <div className="p-4">
+          <p className="text-xs font-medium text-primary">{getPrimaryCategoryName(product)}</p>
           <Heading level={3} size={4} className="mt-1 text-lg group-hover:text-primary">
             {product.name}
           </Heading>
@@ -44,12 +42,6 @@ export function ProductCard({ product }: { product: Product }) {
           </p>
         </div>
       </Link>
-
-      {startingPrice != null && (
-        <div className="p-4">
-          <AddToCartButton product={product} className="w-full" />
-        </div>
-      )}
     </div>
   );
 }

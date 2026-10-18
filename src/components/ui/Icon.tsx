@@ -28,28 +28,23 @@ export function SearchIcon({ className }: IconProps) {
   );
 }
 
-export function ShoppingCartIcon({ className }: IconProps) {
+export function FilterIcon({ className }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
       <path
-        d="M3.5 4.5h2l2.2 11a1.6 1.6 0 0 0 1.6 1.3h7.6a1.6 1.6 0 0 0 1.58-1.36l1.1-7.14H6.2"
+        d="M4 6h16M7.5 12h9M10.5 18h3"
         stroke="currentColor"
         strokeWidth="1.6"
         strokeLinecap="round"
-        strokeLinejoin="round"
       />
-      <circle cx="10" cy="20" r="1.3" fill="currentColor" />
-      <circle cx="17" cy="20" r="1.3" fill="currentColor" />
     </svg>
   );
 }
 
-export function TrashIcon({ className }: IconProps) {
+export function ChevronDownIcon({ className }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
-      <path d="M5 7h14" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-      <path d="M9.5 7V5.5h5V7" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M7 7l.8 12.2a1.5 1.5 0 0 0 1.5 1.4h5.4a1.5 1.5 0 0 0 1.5-1.4L17 7" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }

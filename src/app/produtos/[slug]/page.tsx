@@ -6,7 +6,7 @@ import { Heading } from "@/components/ui/Heading";
 import { ProductGallery } from "@/components/sections/ProductGallery";
 import { ProductPurchaseOptions } from "@/components/sections/ProductPurchaseOptions";
 import { BackToCatalogLink } from "@/components/sections/BackToCatalogLink";
-import { getAllProducts, getCategoryName, getProductBySlug, getStartingPrice } from "@/lib/products";
+import { getAllProducts, getPrimaryCategoryName, getProductBySlug, getStartingPrice } from "@/lib/products";
 import { site } from "@/config/site";
 import { common } from "@/content/common";
 import { productPageContent } from "@/content/product-page";
@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   const canonicalUrl = `/produtos/${product.slug}`;
   const description = common.seo.productDescription(
     product.name,
-    getCategoryName(product.category),
+    getPrimaryCategoryName(product),
     getStartingPrice(product),
   );
 
@@ -61,7 +61,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   if (product.pieceCount) details.push({ label: productPageContent.pieceCountLabel, value: product.pieceCount });
   if (product.colors?.length) details.push({ label: productPageContent.colorsLabel, value: product.colors.join(", ") });
 
-  const categoryName = getCategoryName(product.category);
+  const categoryName = getPrimaryCategoryName(product);
   const startingPrice = getStartingPrice(product);
 
   const productJsonLd = {

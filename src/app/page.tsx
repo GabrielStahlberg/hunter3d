@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Hero } from "@/components/sections/Hero";
+import { PromoCarousel } from "@/components/sections/PromoCarousel";
 import { ProductsCatalogSection } from "@/components/sections/ProductsCatalogSection";
-import { HowItWorks } from "@/components/sections/HowItWorks";
 import { CTASection } from "@/components/sections/CTASection";
 import { homeContent } from "@/content/home";
 import { getAllProducts, getCategoriesInUse } from "@/lib/products";
+import { CatalogFilterProvider } from "@/lib/catalog-filter-context";
 
 export const metadata: Metadata = {
   title: homeContent.seo.title,
@@ -18,9 +18,10 @@ export default function Home() {
 
   return (
     <>
-      <Hero content={homeContent.hero} />
-      <HowItWorks content={homeContent.howItWorks} />
-      <ProductsCatalogSection products={products} categories={categories} />
+      <CatalogFilterProvider>
+        <PromoCarousel />
+        <ProductsCatalogSection products={products} categories={categories} />
+      </CatalogFilterProvider>
       <CTASection content={homeContent.cta} />
     </>
   );

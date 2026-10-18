@@ -7,6 +7,7 @@ export const catalogContent = {
   searchLabel: "Buscar produto pelo nome",
   categoryFilterLabel: "Categoria",
   allCategoriesLabel: "Todos",
+  backToAllProductsCta: "Voltar para todos os produtos",
 
   emptyState: {
     title: "Nenhum produto encontrado",
